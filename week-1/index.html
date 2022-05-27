@@ -1,0 +1,124 @@
+<!-- Title: Assignment 1 - Environment Setup
+Author: Professor Kumar
+Date: 26 May 2022
+Modified By: Ferdinand "Papo" Detres Jr
+Description: Landing Page-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WEB 330 - Enterprise JavaScript II</title>
+
+    <link rel="stylesheet" type="text/css" href="/site.css" />
+    <link rel="stylesheet" type="text/css" href="/theme.css">
+
+    <!-- CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/theme.js"></script>
+</head>
+
+<body class="light-theme">
+    <!-- Main Div for Landing page -->
+
+    <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right"
+    style="font-size: 28px;"><span id="icon-text"></span></i>
+
+    <div id="container">
+        <!-- Main header on page with sub heading -->
+        <h1> Ferdinand Detres' Landing Page</h1>
+        <h2>WEB 330 Enterprise Javascript II</h2>
+        
+        <hr>
+        <!-- Provides a header and unordered list of assignments -->
+        <h3>Weekly Assignments</h3>
+        <ul>
+            <a href="">
+                <li>Assignment 2.2</li>
+            </a>
+            <a href="">
+                <li>Assignment 3.2</li>
+            </a>
+            <a href="">
+                <li>Assignment 4.2</li>
+            </a>
+            <a href="">
+                <li>Assignment 5.2</li>
+            </a>
+            <a href="">
+                <li>Assignment 6.2</li>
+            </a>
+            <a href="">
+                <li>Assignment 7.2</li>
+            </a>
+            <a href="">
+                <li>Assignment 8.2</li>
+
+            </a>
+       
+        
+        </ul>
+        <!-- Provides a header and unordered list of projects -->
+        <h3>Projects</h3>
+        <ul>
+            <a href= "https://desertcoqui.github.io/">
+                <li>Personal Portfolio</li>
+            </a>
+            <a href= "https://desertcoqui.github.io/web-231/">
+                <li>Web - 231 Landing Page</li>
+            </a>
+            
+        </ul>
+        <!-- Provides a header and un ordered list of external links 
+        to important links using anchor tags.
+        Pages will open in separate window with target attribute value -->
+        <h4>Important Links</h4>
+
+        <ul>
+            <li><a href="https://github.com/Desertcoqui/web-330" target="_blank">WEB 330 GitHub Repository</a></li>
+                  <li><a href="https://bruinconnect.bellevue.edu/" target="_blank">BRUIN Connect</a></li>
+            <li><a href="https://validator.w3.org/" target="_blank">W3C HTML Validator</a></li>
+            <li><a href="http://jigsaw.w3.org/css-validator/" target="_blank">W3C CSS Validator</a></li>
+            <li><a href="https://www.w3schools.com/html/" target="_blank">HTML Tutorial</a></li>
+            <li><a href="https://www.w3schools.com/js/js_best_practices.asp" target="_blank">Javascript Best
+                    Practices</a></li>
+            
+      
+        </ul>
+    </div>
+    <script>
+        // function from theme.js
+        setDefaultTheme();
+    
+        // onclick function
+        function toggleMode(x) {
+          let colorTheme = document.body.classList;
+          let iconMode = x.classList;
+
+        //   console.log(colorTheme); 
+
+          if (colorTheme.value === 'light-theme') {
+            localStorage.clear();
+            localStorage.setItem('mode', 'dark-theme');
+            localStorage.setItem('iconMode', 'fa-toggle-on');
+            localStorage.setItem('iconText', 'Dark Mode');
+
+            // console.log(localStorage); 
+
+          } else {
+            localStorage.clear();
+            localStorage.setItem('mode', 'light-theme');
+            localStorage.setItem('iconMode', 'fa-toggle-off');
+            localStorage.setItem('iconText', 'Light Mode');
+          }
+          colorTheme.value = localStorage.getItem('mode');
+          iconMode.value = `fa ${localStorage.getItem('iconMode')} pull-right`;
+          document.getElementById('icon-text').innerHTML =
+            localStorage.getItem('iconText');
+        }
+      </script>
+</body>
+
+</html>

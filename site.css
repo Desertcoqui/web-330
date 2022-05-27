@@ -1,7 +1,7 @@
 /* 
 Title: Web 330
 Author: Professor Kumar
-Date: 2022
+Date: May 262022
 Modified By: Ferdinand "Papo" Detres Jr
 Description: This is the main css file for Assignment -- which links
 to the index.html file. Code for the css was provided by instructions for 
@@ -15,6 +15,7 @@ body {
 /* This div holds everything within the page and sets my margins */
   #container {
       margin: 50px 50px 0px 100px;
+      padding: 10px;
   }
 
 /* Adds styling to all my header tags */
@@ -64,4 +65,48 @@ a:visited {
 
 .full-width {
   width: 100%;
+} 
+
+#icon-mode:hover {
+cursor: pointer;
+}
+#icon-text {
+  padding-left: 10px;
+  color: rgb(135, 129, 129);
+}
+.pull-right {
+  float: right;
+}
+
+.assign-container {
+  padding: 10px;
+}
+
+.assign-content {
+  width: 600px;
+  margin: 3% auto 0;
+}
+
+.assign-results-text {
+  text-align: center;
+  font-size: 28px;
+}
+
+/**
+  Styles added per the requirements in the Web 330 HTML, CSS, and JavaScript Requirements document.
+*/
+.app-header {
+  text-align: center;
+  font-weight: 400;
+  border: none;
+  color: inherit;
+  background-color: inherit;
+}
+.drop-down-menu {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
