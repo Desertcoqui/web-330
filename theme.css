@@ -1,7 +1,7 @@
 /* 
 Title: Web 330
 Author: Professor Kumar
-Date: May 262022
+Date: May 26 2022
 Modified By: Ferdinand "Papo" Detres Jr
 Description: This is the theme css file for Assignment -- which links
 to the index.html file. Code for the css was provided by instructions for 
@@ -68,7 +68,7 @@ Assignment -- in a word doc.
   }
 
   body.light-theme {
-    --text-color: rgb(245, 239, 239);
+    --text-color: #000;
     --background-color: #fff;
     --anchor-color: #4f3674;
     --h1-background-color: #3c275a;
@@ -131,7 +131,7 @@ a:hover {
 }
 
 h1 {
-  color: var(--heading-color --text-color);
+  color: var(--heading-color );
   background-color: var(--h1-background-color);
   padding: 10px;
   border: 1px solid var(--h1-border-color);
