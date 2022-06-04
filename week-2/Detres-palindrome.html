@@ -1,10 +1,10 @@
 <!-- 
-Title: Assignment 3 Temperature Conversion App
-Author: Professor Krasso
-Date: 7 Nov 21
+Title: Assignment 2.2
+Author: Professor Kumar
+Date: 4 June 21
 Modified By: Ferdinand "Papo" Detres Jr
-Description: This week's project has us convert Fahrenheit to Celsius w/Javascript
-Code Attributions: The classes and id's were taken from the CSS styleguide provided by Prof Krasso.
+Description: This week's project has us checking for Palindromes with Javascript
+Code Attributions: The classes and id's were taken from the CSS styleguide provided by Bellevue.
 -->
 
 <!DOCTYPE html>
@@ -14,18 +14,18 @@ Code Attributions: The classes and id's were taken from the CSS styleguide provi
 <head>
     <meta charset="UTF-8">
     <title>WEB 330 - Enterprise JavaScript II</title>
+
+    <!-- css -->
     <link rel="stylesheet" type="text/css" href="../global.css" />
     <link rel="stylesheet" type="text/css" href="../site.css" />
     <link rel="stylesheet" type="text/css" href="../theme.css" />
 
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
+    <!-- font links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
-   
-</head>
 
+</head>
+ <!-- first card -->
 <body class="light-theme">
     <div class="assign-container">
         <h1 class="app-header">
@@ -46,7 +46,7 @@ Code Attributions: The classes and id's were taken from the CSS styleguide provi
                         </div>
                         <div class="form-field">
                             <button class="btn btn-primary full-width" onclick="button()">
-                               Check Phrase
+                                Check Phrase
                             </button>
 
                         </div>
@@ -56,14 +56,19 @@ Code Attributions: The classes and id's were taken from the CSS styleguide provi
             </div>
 
         </div>
+        <!-- second card with results -->
         <div id="card-example2">
             <div class="card">
                 <div class="card-title">
                     Palindrome Results
                 </div>
-                <div class=" card-title card-content" id="results">
+                <div class=" card-title card-content" id="assign-results">
+                    
 
                 </div>
+                <div id="assign-results-text">
+
+                    </div>
 
             </div>
             <br>
@@ -72,8 +77,9 @@ Code Attributions: The classes and id's were taken from the CSS styleguide provi
             </div>
 
         </div>
-
+<!-- scripts -->
         <script src="../theme.js"></script>
+        <script src="Detres-palindrome.js"></script>
     </div>
 </body>
 
