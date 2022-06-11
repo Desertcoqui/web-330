@@ -6,4 +6,11 @@ Modified By: Ferdinand "Papo" Detres Jr
 Description: This is the main css file for Assignment -- which links
 to the index.html file. Code for the css was provided by instructions for 
 Assignment -- in a word doc.
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 */
+
+.flex-box{
+  padding:25px;
+  grid-template-columns: 1fr 1fr;
+  display:grid;
+}
