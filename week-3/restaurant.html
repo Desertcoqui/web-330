@@ -198,6 +198,37 @@ https://www.youtube.com/watch?v=Q3SBogjUfMk
         </script>
 
         <script src="../theme.js"></script>
+        <script>
+            // function from theme.js
+            setDefaultTheme();
+    
+            // onclick function
+            function toggleMode(x) {
+                let colorTheme = document.body.classList;
+                let iconMode = x.classList;
+    
+                //   console.log(colorTheme); 
+    
+                if (colorTheme.value === 'light-theme') {
+                    localStorage.clear();
+                    localStorage.setItem('mode', 'dark-theme');
+                    localStorage.setItem('iconMode', 'fa-toggle-on');
+                    localStorage.setItem('iconText', 'Dark Mode');
+    
+                    // console.log(localStorage); 
+    
+                } else {
+                    localStorage.clear();
+                    localStorage.setItem('mode', 'light-theme');
+                    localStorage.setItem('iconMode', 'fa-toggle-off');
+                    localStorage.setItem('iconText', 'Light Mode');
+                }
+                colorTheme.value = localStorage.getItem('mode');
+                iconMode.value = `fa ${localStorage.getItem('iconMode')} pull-right`;
+                document.getElementById('icon-text').innerHTML =
+                    localStorage.getItem('iconText');
+            }
+        </script>
 </body>
 
 </html>
