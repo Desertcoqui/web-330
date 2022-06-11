@@ -9,49 +9,46 @@ Assignment -- in a word doc.
 */
 
 /* Adds Google font Oswald to everything inside the body element */
-body {
-    font-family: 'Oswald', Verdana, Arial, sans-serif;
-  }
-/* This div holds everything within the page and sets my margins */
-  #container {
-      margin: 50px 50px 0px 100px;
-      padding: 10px;
-  }
-
-/* Adds styling to all my header tags */
-h1, h2, h3, h4 {
-    background-color: #3c275a;
-    color: white;
-    border: 1px solid #D6A800;
-    padding: 10px;
+#container {
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
-
-/* this targets all my anchor elements under h4 Important Links */
-a {
-    color: #453674;
-    text-decoration: none;
+#icon-mode:hover {
+  cursor: pointer;
 }
-a:hover {
-  background-color: #d6A800;
-  color: #4f3674;
 
+#icon-text {
+  padding-left: 10px;
 }
-a:visited {
-  color: #3C275A;
-  text-decoration: none;
+
+.pull-right {
+  float: right;
+}
+
+.app-header {
+  text-align: center;
+  font-weight: 400;
+  border: none;
+  color: inherit;
+  background-color: inherit;
 }
 
 .return-home {
   color: #4f3674;
   text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
 }
+
 .return-home:hover {
   background-color: #d6a800;
   color: #4f3674;
 }
+
 .return-home:visited {
-  color: #3c275A;
+  color: #3c275a;
 }
 
 .form {
@@ -65,17 +62,6 @@ a:visited {
 
 .full-width {
   width: 100%;
-} 
-
-#icon-mode:hover {
-cursor: pointer;
-}
-#icon-text {
-  padding-left: 10px;
-  color: rgb(135, 129, 129);
-}
-.pull-right {
-  float: right;
 }
 
 .assign-container {
@@ -90,17 +76,6 @@ cursor: pointer;
 .assign-results-text {
   text-align: center;
   font-size: 28px;
-}
-
-/**
-  Styles added per the requirements in the Web 330 HTML, CSS, and JavaScript Requirements document.
-*/
-.app-header {
-  text-align: center;
-  font-weight: 400;
-  border: none;
-  color: inherit;
-  background-color: inherit;
 }
 .drop-down-menu {
   padding: 12px 20px;

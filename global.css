@@ -7,15 +7,15 @@ Description: This is a global css file with requirements set by
 web231 assignment requirements
 */
 
-body {
-    font-family: 'Oswald', Verdana, Arial, sans-serif;
-  }
-  
   
   /* #container {
     padding: 10px;
   } */
-  
+  .small-box {
+    width:300px;
+    margin:3% auto 0;
+  }
+
   #card-example {
     width: 600px;
     margin: 3% auto 0;
