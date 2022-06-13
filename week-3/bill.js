@@ -12,42 +12,40 @@
 // https://www.youtube.com/watch?v=Q3SBogjUfMk
 
 export class Bill {
-    _beverages = [];
-    _appetizers = [];
-    _mainCourses = [];
-    _desserts = [];
+  _beverages = [];
+  _appetizers = [];
+  _mainCourses = [];
+  _desserts = [];
 
-    addBeverage(beverage){
-        this._beverages.push(beverage);
-    }
-    addAppetizer(appetizer){
-        this._appetizers.push(appetizer);
-    }
-    addMainCourse(mainCourse) {
-        this._mainCourses.push(mainCourse);
-    }
-    addDessert(dessert){
-        this._desserts.push(dessert);
-    }
-    getTotal(){
+  addBeverage(beverage) {
+    this._beverages.push(beverage);
+  }
+  addAppetizer(appetizer) {
+    this._appetizers.push(appetizer);
+  }
+  addMainCourse(mainCourse) {
+    this._mainCourses.push(mainCourse);
+  }
+  addDessert(dessert) {
+    this._desserts.push(dessert);
+  }
+  getTotal() {
+    let total = 0;
 
-        let total = 0;
-
-        // loops over each array and calculates prices
-        this._beverages.forEach(function (beverages) {
-            total += parseFloat(beverage.price);
-          });
-         this._appetizers.forEach(function (appetizers) {
-            total += parseFloat(appetizer.price);
-          });
-          this._mainCourses.forEach(function (mainCourses) {
-            total += parseFloat(mainCourse.price);
-          });
-          this._desserts.forEach(function (desserts) {
-            total += parseFloat(dessert.price);
-          });
-          console.log(total);
-         return total.toFixed(2);
-    }
+    // loops over each array and calculates prices
+    this._beverages.forEach(function (beverage) {
+      total += parseFloat(beverage.price);
+    });
+    this._appetizers.forEach(function (appetizer) {
+      total += parseFloat(appetizer.price);
+    });
+    this._mainCourses.forEach(function (mainCourse) {
+      total += parseFloat(mainCourse.price);
+    });
+    this._desserts.forEach(function (dessert) {
+      total += parseFloat(dessert.price);
+    });
+    console.log(total);
+    return total.toFixed(2);
+  }
 }
-
