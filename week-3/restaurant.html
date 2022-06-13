@@ -47,7 +47,7 @@ https://www.youtube.com/watch?v=Q3SBogjUfMk
                 <div class="card-title">Restaurant Menu</div>
                 <div class="flex-box">
 
-<!-- Card1 -->
+                    <!-- Card1 -->
                     <div class="card">
                         <div class="card-title">Beverages</div>
                         <div class="card-content" id='beverages'>
@@ -65,7 +65,7 @@ https://www.youtube.com/watch?v=Q3SBogjUfMk
                             <br>
                         </div>
                     </div>
-<!-- Card2 -->
+                    <!-- Card2 -->
                     <div class="card">
                         <div class="card-title">Appetizers</div>
                         <div class="card-content" id="appetizers">
@@ -84,7 +84,7 @@ https://www.youtube.com/watch?v=Q3SBogjUfMk
                         </div>
                     </div>
 
-<!-- Card3 -->
+                    <!-- Card3 -->
 
                     <div class="card">
                         <div class="card-title">Main Courses</div>
@@ -103,7 +103,7 @@ https://www.youtube.com/watch?v=Q3SBogjUfMk
                             <br>
                         </div>
                     </div>
-<!-- Card4 -->
+                    <!-- Card4 -->
                     <div class="card">
                         <div class="card-title">Dessert</div>
                         <div class="card-content" id="desserts">
@@ -135,10 +135,6 @@ https://www.youtube.com/watch?v=Q3SBogjUfMk
                 <div class="card-content assign-results-text" id="orderTotal">
                 </div>
             </div>
-            <br>
-            <div>
-                <a class="return-home" href="../index.html">Return</a>
-            </div>
 
         </div>
 
@@ -151,48 +147,49 @@ https://www.youtube.com/watch?v=Q3SBogjUfMk
             // Targets Div IDs and individual item names by using the TagName Method returning a NodeList Object
 
 
-            document.getElementById('btnORDER').onclick = function () {
+            document.getElementById( 'btnORDER' ).onclick = function ()
+            {
 
-                const beveragesEl = document.getElementById('beverages');
-                const beverages = beveragesEl.getElementsByTagName('input');
+                const beveragesEl = document.getElementById( 'beverages' );
+                const beverages = beveragesEl.getElementsByTagName( 'input' );
 
-                const appetizersEl = document.getElementById('appetizers');
-                const appetizers = appetizersEl.getElementsByTagName('input');
+                const appetizersEl = document.getElementById( 'appetizers' );
+                const appetizers = appetizersEl.getElementsByTagName( 'input' );
 
-                const mainCourseEl = document.getElementById('main-course');
-                const mainCourses = mainCourseEl.getElementsByTagName('input');
+                const mainCourseEl = document.getElementById( 'main-course' );
+                const mainCourses = mainCourseEl.getElementsByTagName( 'input' );
 
-                const dessertsEl = document.getElementById('desserts');
-                const desserts = dessertsEl.getElementsByTagName('input');
+                const dessertsEl = document.getElementById( 'desserts' );
+                const desserts = dessertsEl.getElementsByTagName( 'input' );
 
                 // new object created from imported class Bill
                 let bill = new Bill();
 
                 //for of loop to iterate over the variables with the input fields
-                for (let beverage of beverages) {
-                    if (beverage.checked) {
-                        bill.addBeverage(new Beverage(beverage.name, beverage.value))
+                for ( let beverage of beverages ) {
+                    if ( beverage.checked ) {
+                        bill.addBeverage( new Beverage( beverage.name, beverage.value ) )
                     }
-                    console.log(beverage.value);
+                    console.log( beverage.value );
                 }
-                for (let appetizer of appetizers) {
-                    if (appetizer.checked) {
-                        bill.addAppetizer(new Appetizer(appetizer.name, appetizer.value))
-                    }
-                }
-                for (let mainCourse of mainCourses) {
-                    if (mainCourse.checked) {
-                        bill.addMainCourse(new MainCourse(mainCourse.name, mainCourse.value))
+                for ( let appetizer of appetizers ) {
+                    if ( appetizer.checked ) {
+                        bill.addAppetizer( new Appetizer( appetizer.name, appetizer.value ) )
                     }
                 }
-                for (let dessert of desserts) {
-                    if (dessert.checked) {
-                        bill.addDessert(new Dessert(dessert.name, dessert.value))
+                for ( let mainCourse of mainCourses ) {
+                    if ( mainCourse.checked ) {
+                        bill.addMainCourse( new MainCourse( mainCourse.name, mainCourse.value ) )
+                    }
+                }
+                for ( let dessert of desserts ) {
+                    if ( dessert.checked ) {
+                        bill.addDessert( new Dessert( dessert.name, dessert.value ) )
                     }
                 }
                 // Binds Order results into  div container
 
-                document.getElementById('orderTotal').innerHTML = `Your order total is ${bill.getTotal()}`;
+                document.getElementById( 'orderTotal' ).innerHTML = `Your order total is ${ bill.getTotal() }`;
 
             }
         </script>
@@ -201,32 +198,33 @@ https://www.youtube.com/watch?v=Q3SBogjUfMk
         <script>
             // function from theme.js
             setDefaultTheme();
-    
+
             // onclick function
-            function toggleMode(x) {
+            function toggleMode ( x )
+            {
                 let colorTheme = document.body.classList;
                 let iconMode = x.classList;
-    
+
                 //   console.log(colorTheme); 
-    
-                if (colorTheme.value === 'light-theme') {
+
+                if ( colorTheme.value === 'light-theme' ) {
                     localStorage.clear();
-                    localStorage.setItem('mode', 'dark-theme');
-                    localStorage.setItem('iconMode', 'fa-toggle-on');
-                    localStorage.setItem('iconText', 'Dark Mode');
-    
+                    localStorage.setItem( 'mode', 'dark-theme' );
+                    localStorage.setItem( 'iconMode', 'fa-toggle-on' );
+                    localStorage.setItem( 'iconText', 'Dark Mode' );
+
                     // console.log(localStorage); 
-    
+
                 } else {
                     localStorage.clear();
-                    localStorage.setItem('mode', 'light-theme');
-                    localStorage.setItem('iconMode', 'fa-toggle-off');
-                    localStorage.setItem('iconText', 'Light Mode');
+                    localStorage.setItem( 'mode', 'light-theme' );
+                    localStorage.setItem( 'iconMode', 'fa-toggle-off' );
+                    localStorage.setItem( 'iconText', 'Light Mode' );
                 }
-                colorTheme.value = localStorage.getItem('mode');
-                iconMode.value = `fa ${localStorage.getItem('iconMode')} pull-right`;
-                document.getElementById('icon-text').innerHTML =
-                    localStorage.getItem('iconText');
+                colorTheme.value = localStorage.getItem( 'mode' );
+                iconMode.value = `fa ${ localStorage.getItem( 'iconMode' ) } pull-right`;
+                document.getElementById( 'icon-text' ).innerHTML =
+                    localStorage.getItem( 'iconText' );
             }
         </script>
 </body>
