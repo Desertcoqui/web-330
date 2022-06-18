@@ -1,0 +1,92 @@
+<!-- // Title: Assignment 4
+// Author: Professor Kumar
+// Date: 18 June 21
+// Modified By: Ferdinand "Papo" Detres Jr
+// Description: This week's project is a Calorie Counter
+// Code Attributions: The classes and id's were taken from the CSS styleguide provided by Bellevue.
+// https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+// https://rollbar.com/blog/javascript-constructors/
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
+// https://www.w3schools.com/jsref/prop_checkbox_value.asp
+// https://www.tutorialspoint.com/es6/es6_modules.htm
+// https://www.youtube.com/watch?v=Q3SBogjUfMk -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>WEB 330 - Enterprise JavaScript II</title>
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    <link rel="stylesheet" type="text/css" href="../site.css" />
+    <link rel="stylesheet" type="text/css" href="../theme.css" />
+    <link rel="stylesheet" type="text/css" href="detres-calorie.css" />
+
+
+    <!-- font links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="light-theme">
+    <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px"><span
+            id="icon-text"></span></i>
+    <div class="assign-container">
+        <h1 class="app-header">Welcome to the Calorie App!</h1>
+        <div class="assign-content">
+            <div class="card ">
+                <div class="card-title">Calorie Search Form</div>
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <label for="txtFoodIteam">
+                                Enter a food item:
+                            </label>
+                            <input type="text" class="input" id="txtFoodIteam" name="phraseValue"><br>
+                            <span id="foodList">(Ex: Egg, Apple, Hamburger, Fries, Banana, Soda)</span>
+                        </div>
+                        <div class="form-field">
+                            <button class="btn btn-primary full-width" onclick="button()">
+                                Search
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div> <a class="return-home" href="../index.html">Return</a>
+        </div>
+
+    </div>
+    </div>
+
+    <!-- Results Container -->
+    <div id="card-example2">
+        <div class="card">
+            <div class="card-title">
+                Search Results
+            </div>
+            <div class="card-content assign-results-text" id="orderTotal">
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script type="module">
+
+
+    </script>
+
+    <script src="../theme.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>
