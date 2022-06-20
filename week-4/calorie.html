@@ -4,15 +4,17 @@
 // Modified By: Ferdinand "Papo" Detres Jr
 // Description: This week's project is a Calorie Counter
 // Code Attributions: The classes and id's were taken from the CSS styleguide provided by Bellevue.
-// https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-// https://rollbar.com/blog/javascript-constructors/
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
-// https://www.w3schools.com/jsref/prop_checkbox_value.asp
-// https://www.tutorialspoint.com/es6/es6_modules.htm
-// https://www.youtube.com/watch?v=Q3SBogjUfMk -->
+https://www.javascripttutorial.net/es6/javascript-static-method/
+https://www.w3schools.com/jsref/jsref_tolowercase.asp
+http://www.foreui.com/articles/Key_Code_Table.htm
+https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
+https://stackoverflow.com/questions/17925501/how-to-trigger-another-keycode-after-catching-enter-keycode13
+
+-->
+
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -22,13 +24,13 @@
     <link rel="stylesheet" type="text/css" href="../global.css" />
     <link rel="stylesheet" type="text/css" href="../site.css" />
     <link rel="stylesheet" type="text/css" href="../theme.css" />
-    <link rel="stylesheet" type="text/css" href="detres-calorie.css" />
+    <link rel="stylesheet" type="text/css" href="./detres-calorie-converter.js" />
 
 
     <!-- font links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+    <script src="../theme.js"></script>
 </head>
 
 <body class="light-theme">
@@ -42,14 +44,14 @@
                 <div class="card-content">
                     <div class="form">
                         <div class="form-field">
-                            <label for="txtFoodIteam">
+                            <label for="txtFoodItem">
                                 Enter a food item:
                             </label>
-                            <input type="text" class="input" id="txtFoodIteam" name="phraseValue"><br>
-                            <span id="foodList">(Ex: Egg, Apple, Hamburger, Fries, Banana, Soda)</span>
+                            <input type="text" class="input" id="txtFoodItem" name="FoodItem"><br>
+                            <span id="foodList"></span>
                         </div>
                         <div class="form-field">
-                            <button class="btn btn-primary full-width" onclick="button()">
+                            <button class="btn btn-primary full-width" id="button">
                                 Search
                             </button>
 
@@ -70,7 +72,7 @@
             <div class="card-title">
                 Search Results
             </div>
-            <div class="card-content assign-results-text" id="orderTotal">
+            <div class="card-content assign-results-text" id="searchResults">
             </div>
         </div>
 
@@ -78,15 +80,69 @@
 
 
 
-    <script type="module">
 
 
+    <script type='module'>
+
+        setDefaultTheme();
+
+        import {CalorieConverter} from "./detres-calorie-converter.js"
+
+
+
+
+
+        let txtFoodItemEl=document.getElementById('txtFoodItem');
+
+        //button function created with eventlistener in first table.
+        document.getElementById('button').onclick=() => {
+            //gets inputs value 
+            let txtFoodItem=txtFoodItemEl.value;
+
+
+            //searches string from Calorie Converter with the static find function
+            let foods=CalorieConverter.find(txtFoodItem.toLowerCase());
+
+            //returns a table with results from the static find function
+
+            let tableData=`
+                 <table class="table">
+                    <th>Name</th>
+                    <th>Calories</th>
+                    <tbody class="table-hover">`;
+            for(let item of foods) {
+                tableData+=`<tr>
+                    <td>${item.name}</td>
+                    <td>${item.calories}</td>
+                    </tr>`;
+            }
+            document.getElementById('searchResults').innerHTML=
+                tableData+` </tbody></table>`;
+
+        };
+
+        // click handler for enter button
+        window.addEventListener('keyup',(event) => {
+            if(event.keyCode===13) {
+                event.preventDefault();
+                document.getElementById('button').click();
+            }
+        });
+
+        // Array of objects from Calorie converter Class
+        const foodList=CalorieConverter.data;
+
+        //items template
+        let foodListData=`<i>(Ex: `;
+        for(let name of foodList) {
+            foodListData+=name.name+', ';
+        }
+        document.getElementById('foodList').innerHTML=
+            foodListData.slice(0,-2)+')</i>';
+
+        toggleMode();
     </script>
 
-    <script src="../theme.js"></script>
-    <script>
-
-    </script>
 </body>
 
 </html>
