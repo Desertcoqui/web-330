@@ -1,3 +1,16 @@
+<!-- // Title: Bob Repair
+// Author: Professor Kumar
+// Modified by: Ferdinand Detres
+// Date: June 26 2022
+// Description: Javascript repair app with iterators 
+https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
+https://www.w3schools.com/jsref/met_win_alert.asp
+
+-->
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,10 +43,10 @@
             <div class="card ">
                 <div class="card-title">Product Listing
                     <br>
-
+                    <!-- Product counter -->
                     <cart-component></cart-component>
                 </div>
-
+                <!-- Here you pick your Items -->
                 <div class="form">
                     <div class="form-field">
                         <label for="productList">
@@ -63,8 +76,7 @@
             <a class="return-home" href="../index.html">Return</a>
         </div>
     </div>
-    </div>
-    </div>
+
 
     <!-- Results Container -->
     <div id="card-example2">
@@ -82,15 +94,65 @@
 
 
 
-    <!-- <script type='module'>
-
+    <script type='module'>
+        // imports
         setDefaultTheme();
 
-        import {CalorieConverter} from "./detres-calorie-converter.js"
+        import {Product} from "./product.js";
+        import {ShoppingCart} from "./shopping-cart.js"
+
+
+        // new instance of shopping cart
+        let shoppingCart=new ShoppingCart();
+
+        //Counts items in Cart the element 'card-count' was created in the cart-component.js
+        function setCartCount() {
+            let cartCount=document.getElementById('cart-count');
+            cartCount.innerHTML=shoppingCart.count()
+        }
+        setCartCount();
+
+
+        document.getElementById('button').onclick=function() {
+
+            let productList=document.getElementById('productList');
+
+            //return index of product selected
+            let product=productList.options[productList.selectedIndex];
+            console.log(product);
+
+            if(product.value!=='select') {
+                shoppingCart.add(new Product(product.label,product.value));
+                setCartCount();
+                window.alert(product.label+' woop woop, we got the good stuff baby!');
+            }
+
+        }
+
+        document.getElementById('cartIcon').onclick=function() {
+            let cartDisplayTable=`
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                    <tbody class="table-hover">
+            `;
+            for(let products of shoppingCart) {
+                cartDisplayTable+=`
+                <tr>
+                    <td>${products.id}</td>    
+                    <td>${products.name}</td>    
+                    <td>${products.price}</td>    
+                </tr>`;
+            }
+            document.getElementById('shoppingCart').innerHTML=cartDisplayTable+`</tbody ></table>`
+        }
 
 
         toggleMode();
-    </script> -->
+    </script>
 
 </body>
 

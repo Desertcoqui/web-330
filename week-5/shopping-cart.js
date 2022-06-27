@@ -12,7 +12,7 @@ export class ShoppingCart {
   }
 
   count() {
-    return products.length;
+    return this.products.length;
   }
 
   //push product to products empty products array

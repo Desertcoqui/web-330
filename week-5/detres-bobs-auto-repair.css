@@ -1,0 +1,16 @@
+/* // Title: Bob Repair
+// Author: Professor Kumar
+// Modified by: Ferdinand Detres
+// Date: June 26 2022
+CSS provided in assignment instructions
+*/
+
+#cart-message {
+  float: right;
+  color: #df546a;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+i:hover {
+  cursor: pointer;
+}
