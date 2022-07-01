@@ -6,4 +6,17 @@ Modified By: Ferdinand "Papo" Detres Jr
 Description: This is the main css file for Assignment Future Value App which links
 to the index.html file. Code for the css was provided by instructions for 
 Assignment six in a word doc.
+
 */
+
+.danger {
+  float: right;
+  color: #df546a;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.form-label {
+  display: inline-block;
+  padding-top: 1rem;
+}
