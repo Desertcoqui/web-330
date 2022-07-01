@@ -5,6 +5,7 @@
 // Description: Javascript class with a constructor
 //Code came from class instructions
 // https://medium.com/@samjwright/nan-in-javascript-explained-8808d8cbecfe
+//https://www.javascripttutorial.net/es6/javascript-static-properties/
 
 export class FloatField {
   constructor(name, field) {
