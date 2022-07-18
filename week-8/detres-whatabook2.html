@@ -1,0 +1,214 @@
+<!-- // Title: WhatABook Part 2
+// Author: Professor Kumar
+// Modified by: Ferdinand Detres
+// Date: July 16 2022
+// Description: Book that uses fetch to grab data
+//https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
+//https://www.stat.auckland.ac.nz/~paul/ItDT/HTML/node46.html#:~:text=The%20main%20content%20of%20an,the%20form%20.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <link rel="stylesheet" type="text/css" href="../site.css" />
+    <link rel="stylesheet" type="text/css" href="../theme.css" />
+
+    <link rel="stylesheet" href="./detres-whatabook2.css">
+
+    <!-- CDN Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" />
+
+    <!-- JS links -->
+    <script src="../theme.js"></script>
+
+    <title>WEB 330 – Enterprise JavaScript II</title>
+</head>
+
+<body class="light-theme">
+    <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px"><span
+            id="icon-text"></span></i>
+    <!-- Assignment Container -->
+    <div class="assign-container">
+        <h1 class="app-header">Welcome to the WhatABook, Part 2 App!</h1>
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">Book Listing</div>
+                <div class="card-content" id="bookList">
+                    <!--  Books Table -->
+
+
+                </div> <!--  Books Table-->
+            </div>
+            <a class="return-home" href="../index.html">Return</a>
+        </div>
+
+
+        <!-- Results Container -->
+        <div class="assign-container">
+            <div class="assign-content">
+                <div class="card">
+                    <div class="card-title">Selected Book</div>
+                    <div class="card-content assign-results-text" id="selectedBook"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module">
+        // Set Css Theme
+        setSelectedTheme();
+
+        import {HttpClient} from './http-client.js';
+
+        let http=new HttpClient();
+
+        //[] of isbn numbers
+        const isbn=[
+            '0345339681',
+            '0261103571',
+            '9780593099322',
+            '9780261102361',
+            '9780261102378',
+            '9780590302715',
+            '9780316769532',
+            '9780743273565',
+            '9780590405959'
+        ];
+
+        //passing request
+        const params={
+            "bibkeys": `ISBN:${isbn.join(",")}`,
+            "format": "json",
+            "jscmd": "details"
+        };
+
+
+
+        //get request to CNCTNATE
+        http.get('https://openlibrary.org/api/books',params)
+            .then(res => {
+
+                document.getElementById('bookList').innerHTML=buildHtmlString(res,'table');
+
+                //isbn button clicky thing
+                addIsbnClickEvents();
+            })
+            .catch(e => {
+
+            });
+
+
+        //isbn list built
+        function getBook(e) {
+            e.preventDefault();
+            let self=this;
+            let isbn=self.innerText;
+
+            const params={
+                "bibkeys": `ISBN:${isbn}`,
+                "format": "json",
+                "jscmd": "details"
+            };
+            //get request duh
+            http.get('https://openlibrary.org/api/books',params)
+                .then(res => {
+                    console.log(res);
+
+                    document.getElementById('selectedBook').innerHTML=buildHtmlString(res,'ul');
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        }
+
+        //determines which table to build
+        function buildHtmlString(res,format) {
+            let tableString=`<table class="table" id="bookTable">
+                        <tr>
+                            <th>
+                                ISBN
+                            </th>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Pages
+                            </th>
+                            <th>
+                                Authors
+                            </th>
+                        </tr>
+                        <tbody>`;
+
+            let ulString='';
+            //loop over response object
+            for(let key in res) {
+                ulString+=`<ul style='list-style-type:none; text-align: left; font-size:1rem;' >`;
+
+                if(res.hasOwnProperty(key)) {
+
+                    let authors=[];
+                    if(res[key].details.authors) {
+                        authors=res[key].details.authors.map((author => {
+
+                            return author.name;
+                        }));
+                    }
+                    //book object literals populated
+                    let book={
+                        isbn: res[key].details.isbn_13||res[key].details.isbn_10,
+                        title: res[key].details.title,
+                        description: res[key].details.subtitle? res[key].details.subtitle:'N/A',
+                        pages: res[key].details.number_of_pages? res[key].details.number_of_pages:'N/A',
+                        authors: authors.join(',')
+                    };
+                    //building html list
+                    ulString+=`
+                    <li><b>ISBN:</b> ${book.isbn}</li>
+                    <li><b>Title:</b> ${book.title}</li>
+                    <li><b>Description:</b> ${book.description}</li>
+                    <li><b>Pages:</b> ${book.pages}</li>
+                    <li><b>Authors:</b> ${book.authors}</li>`;
+
+                    tableString+=`
+                    <tr>
+                        <td><a href='#' class='isbn-link'>${book.isbn}</td>
+                        <td>${book.title}</td>
+                        <td>${book.description}</td>
+                        <td>${book.pages}</td>
+                        <td>${book.authors}</td>
+                    </tr>`;
+                }
+            }
+            //building table
+            tableString+=`</tbody></table>`;
+
+            if(format==='table') {
+                return tableString;
+            }
+            return ulString;
+        }
+
+        //click event for table
+        function addIsbnClickEvents() {
+            let viewButtons=document.querySelectorAll('#bookTable tbody .isbn-link');
+            for(let i=0;i<viewButtons.length;i++) {
+                viewButtons[i].addEventListener('click',getBook);
+            }
+        }
+        toggleMode();
+    </script>
+</body>
+
+</html>
